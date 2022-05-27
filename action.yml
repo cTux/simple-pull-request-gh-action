@@ -25,7 +25,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: ${{ github.action_path }}pre-command.sh ${{ inputs.path }}
+    - run: ${{ github.action_path }}pre-command.sh ${{ inputs.branch_pr_name }} ${{ inputs.path }}
       shell: bash
     - run: ${{ github.action_path }}command.sh ${{ inputs.command }} ${{ inputs.path }}
       shell: bash

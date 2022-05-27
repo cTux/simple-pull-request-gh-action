@@ -3,8 +3,8 @@
 set -e
 token=$1
 commit_message=$2
-base_branch_name=$3
-base_pr_name=$4
+branch_base_name=$3
+branch_pr_name=$4
 path=$5
 repo=$GITHUB_REPOSITORY
 username=$GITHUB_ACTOR
@@ -14,16 +14,16 @@ if [ -z "$token" ]; then
     exit 1
 fi
 
-if [ -z "$base_branch_name" ]; then
+if [ -z "$branch_base_name" ]; then
     echo "Can't find main branch name. Setting it to default."
-    base_branch_name="main"
-    echo "Main branch changed to $base_branch_name."
+    branch_base_name="main"
+    echo "Main branch changed to $branch_base_name."
 fi
 
-if [ -z "$base_pr_name" ]; then
+if [ -z "$branch_pr_name" ]; then
     echo "Can't find changes branch name. Setting it to default."
-    base_pr_name="simple-pr-changes"
-    echo "Changes branch changed to $base_pr_name."
+    branch_pr_name="simple-pr-changes"
+    echo "Changes branch changed to $branch_pr_name."
 fi
 
 if [ -z "$commit_message" ]; then
@@ -49,11 +49,11 @@ then
 
     echo "https://api.github.com/repos/$repo/pulls"
     echo "Commit message: $commit_message"
-    echo "Head branch: $base_pr_name"
-    echo "Base branch: $base_branch_name"
+    echo "Head branch: $branch_pr_name"
+    echo "Base branch: $branch_base_name"
 
     response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: token $token" \
-         --data '{"title":"'"$commit_message"'","head": "'$base_pr_name'","base":"'$base_branch_name'", "body":"Automatic Pull Request."}' \
+         --data '{"title":"'"$commit_message"'","head": "'$branch_pr_name'","base":"'$branch_base_name'", "body":"Automatic Pull Request."}' \
          "https://api.github.com/repos/$repo/pulls")
     echo "Response: $response"
 else
