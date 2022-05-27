@@ -13,6 +13,9 @@ inputs:
   branch_main_name:
     description: Main branch name
     required: false
+  branch_pr_name:
+    description: Changes branch name
+    required: false
   path:
     description: Path to the directory where command will be executed
     required: false
@@ -26,5 +29,5 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}command.sh ${{ inputs.command }} ${{ inputs.path }}
       shell: bash
-    - run: ${{ github.action_path }}post-command.sh ${{ inputs.token }} ${{ inputs.commit_message }} ${{ inputs.branch_main_name }} ${{ inputs.path }}
+    - run: ${{ github.action_path }}post-command.sh ${{ inputs.token }} ${{ inputs.commit_message }} ${{ inputs.branch_main_name }} ${{ inputs.branch_pr_name }} ${{ inputs.path }}
       shell: bash
