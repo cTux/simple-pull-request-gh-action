@@ -38,3 +38,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           command: "'pnpm run update:dependencies'"
+          commit_message: "chore(dependencies): updated automatically"

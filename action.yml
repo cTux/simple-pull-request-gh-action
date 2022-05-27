@@ -16,6 +16,9 @@ inputs:
   path:
     description: Path to the directory where command will be executed
     required: false
+  commit_message:
+    description: Git commit message
+    required: false
 runs:
   using: 'composite'
   steps:
@@ -23,5 +26,5 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}command.sh ${{ inputs.command }} ${{ inputs.path }}
       shell: bash
-    - run: ${{ github.action_path }}post-command.sh ${{ inputs.token }} ${{ inputs.branch }} ${{ inputs.path }}
+    - run: ${{ github.action_path }}post-command.sh ${{ inputs.token }} ${{ inputs.commit_message }} ${{ inputs.branch }} ${{ inputs.path }}
       shell: bash
