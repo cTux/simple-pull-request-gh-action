@@ -1,0 +1,21 @@
+name: 'Simple Pull Request GitHub Action'
+description: 'Creates Pull Request after running specified command'
+branding:
+  icon: 'arrow-up-circle'
+  color: 'green'
+inputs:
+  token:
+    description: GitHub Token to create a pull request
+    required: true
+  command:
+    description: Command to execute
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: ${{ github.action_path }}/pre-command.sh
+      shell: bash
+    - run: ${{ inputs.command }}
+      shell: bash
+    - run: ${{ github.action_path }}/post-command.sh ${{ inputs.token }}
+      shell: bash
