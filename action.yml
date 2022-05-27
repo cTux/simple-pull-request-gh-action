@@ -19,9 +19,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: ${{ github.action_path }}/pre-command.sh ${{ inputs.path }}
+    - run: pre-command.sh ${{ inputs.path }}
       shell: bash
-    - run: ${{ github.action_path }}/command.sh ${{ inputs.command }} ${{ inputs.path }}?
+    - run: command.sh ${{ inputs.command }} ${{ inputs.path }}?
       shell: bash
-    - run: ${{ github.action_path }}/post-command.sh ${{ inputs.token }} ${{ inputs.branch }}? ${{ inputs.path }}?
+    - run: post-command.sh ${{ inputs.token }} ${{ inputs.branch }}? ${{ inputs.path }}?
       shell: bash
