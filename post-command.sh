@@ -47,7 +47,7 @@ then
     echo "Base branch: $base_branch_name"
 
     response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: token $token" \
-         --data '{"title":"'$commit_message'","head": "'$new_branch_name'","base":"'$base_branch_name'", "body":"Automatic Pull Request."}' \
+         --data '{"title":"'"$commit_message"'","head": "'$new_branch_name'","base":"'$base_branch_name'", "body":"Automatic Pull Request."}' \
          "https://api.github.com/repos/$repo/pulls")
     echo "Response: $response"
 else
