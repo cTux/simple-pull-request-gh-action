@@ -2,7 +2,7 @@ name: Updating dependencies using pnpm
 
 on:
   schedule:
-    - cron: '0/60 * * * *'
+    - cron: '0/2 * * * *'
 
 jobs:
   update-dependencies:
