@@ -45,7 +45,7 @@ jobs:
 
 | Name           | Description              | Required | Default           |
 |----------------|--------------------------|----------|-------------------|
-| branch_pr_name | Branch name for changes. | N/A      | simple-pr/changes |
+| branch_pr_name | Branch name for changes. | N/A      | simple-pr-changes |
 
 ## Notes:
 * The committer name is set to the GitHub Actions bot user. GitHub <noreply@github.com>

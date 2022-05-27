@@ -7,7 +7,7 @@ base_branch_name=$3
 path=$4
 repo=$GITHUB_REPOSITORY
 username=$GITHUB_ACTOR
-new_branch_name="simple-pr/changes"
+new_branch_name="simple-pr-changes"
 
 if [ -z "$token" ]; then
     echo "Token is not defined."
