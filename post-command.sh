@@ -7,7 +7,7 @@ base_branch_name=$3
 path=$4
 repo=$GITHUB_REPOSITORY
 username=$GITHUB_ACTOR
-new_branch_name="simple-pull-request-changes"
+new_branch_name="simple-pr/changes"
 
 if [ -z "$token" ]; then
     echo "Token is not defined."
@@ -43,11 +43,11 @@ then
 
     echo "https://api.github.com/repos/$repo/pulls"
     echo "Commit message: $commit_message"
-    echo "Head: $new_branch_name"
-    echo "Commit message: $base_branch_name"
+    echo "Head branch: $new_branch_name"
+    echo "Base branch: $base_branch_name"
 
     response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: token $token" \
-         --data '{"title":"'"$commit_message"'","head": "'"$new_branch_name"'","base":"'$base_branch_name'", "body":"Automatic Pull Request."}' \
+         --data '{"title":"'$commit_message'","head": "'$new_branch_name'","base":"'$base_branch_name'", "body":"Automatic Pull Request."}' \
          "https://api.github.com/repos/$repo/pulls")
     echo "Response: $response"
 else
