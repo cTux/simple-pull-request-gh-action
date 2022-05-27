@@ -12,8 +12,8 @@ if [ -n "$path_value" ]; then
     cd "$path_value"
 fi
 
-git config --global user.email "$email"
-git config --global user.name "$username"
+git config --global user.email $email
+git config --global user.name $username
 
 echo "Fetching."
 git fetch
