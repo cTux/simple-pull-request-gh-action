@@ -40,7 +40,12 @@ then
     git add -A
     git commit -a -m "$commit_message" --signoff
     git push authenticated -f
+
     echo "https://api.github.com/repos/$repo/pulls"
+    echo "Commit message: $commit_message"
+    echo "Head: $new_branch_name"
+    echo "Commit message: $base_branch_name"
+
     response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: token $token" \
          --data '{"title":"'"$commit_message"'","head": "'"$new_branch_name"'","base":"'$base_branch_name'", "body":"Automatic Pull Request."}' \
          "https://api.github.com/repos/$repo/pulls")
