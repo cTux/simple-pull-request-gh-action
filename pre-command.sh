@@ -1,11 +1,11 @@
 #!/bin/bash
 
 set -e
-branch_name="simple-pr-update"
+branch_name="simple-pr-changes"
 
 echo "Fetching."
 git fetch
-branch_exists=$(git branch --list simple-pr-update)
+branch_exists=$(git branch --list simple-pr-changes)
 echo "Branch exists $branch_exists."
 
 if [ -z "$branch_exists" ]; then

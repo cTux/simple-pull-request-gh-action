@@ -1,1 +1,1 @@
-# Simple Pul Request GitHub Action
+# Simple Pull Request GitHub Action

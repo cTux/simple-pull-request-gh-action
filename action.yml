@@ -4,11 +4,11 @@ branding:
   icon: 'arrow-up-circle'
   color: 'green'
 inputs:
-  token:
-    description: GitHub Token to create a pull request
-    required: true
   command:
     description: Command to execute
+    required: true
+  token:
+    description: GitHub Token to create a pull request
     required: true
   branch:
     description: Main branch name

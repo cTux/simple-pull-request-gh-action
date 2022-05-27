@@ -9,7 +9,7 @@ repo=$GITHUB_REPOSITORY
 echo "Repo $repo."
 username=$GITHUB_ACTOR
 echo "Username $username."
-branch_name="simple-pr-update"
+branch_name="simple-pr-changes"
 email="noreply@github.com"
 
 if [ -z "$token" ]; then
@@ -42,7 +42,7 @@ then
     echo "$response."
 
     if [[ "$response" == *"already exist"* ]]; then
-        echo "Pull request has been already opened. Updates were pushed to the existing PR instead."
+        echo "Pull request has been already opened. Changes were pushed to the existing PR instead."
         exit 0
     fi
 else
