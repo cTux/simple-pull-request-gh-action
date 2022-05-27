@@ -34,7 +34,7 @@ then
     git commit -a -m "new(app): automatic changes" --signoff
     git push authenticated -f
     echo "https://api.github.com/repos/$repo/pulls"
-    response=$(curl --write-out "%{response_code}" -X POST -H "Content-Type: application/json" -H "Authorization: token $token" \
+    response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: token $token" \
          --data '{"title":"new(app): automatic changes","head": "'$new_branch_name'","base":"'$base_branch_name'", "body":"Automatic PR."}' \
          "https://api.github.com/repos/$repo/pulls")
     echo "Response: $response"
