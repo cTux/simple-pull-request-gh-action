@@ -39,7 +39,7 @@ jobs:
 | token            | GITHUB_TOKEN or a Personal Access Token (PAT). | Yes      | N/A                 |
 | branch_main_name | Base branch name.                              | No       | main                |
 | commit_message   | Commit message for a pull request.             | No       | chore(app): changes |
-| path             | Working directory path.                        | No       | ./                  |
+| path             | Working directory path.                        | No       | ''                  |
 
 ## Static
 
