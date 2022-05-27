@@ -24,6 +24,9 @@ jobs:
         with:
           version: 6.20.3
 
+      - name: Changing directory
+        run: cd ./deps/pnpm
+
       - name: Use nodejs ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
