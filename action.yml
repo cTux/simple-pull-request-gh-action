@@ -10,7 +10,7 @@ inputs:
   token:
     description: GitHub Token to create a pull request
     required: true
-  branch:
+  branch_main_name:
     description: Main branch name
     required: false
   path:
@@ -26,5 +26,5 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}command.sh ${{ inputs.command }} ${{ inputs.path }}
       shell: bash
-    - run: ${{ github.action_path }}post-command.sh ${{ inputs.token }} ${{ inputs.commit_message }} ${{ inputs.branch }} ${{ inputs.path }}
+    - run: ${{ github.action_path }}post-command.sh ${{ inputs.token }} ${{ inputs.commit_message }} ${{ inputs.branch_main_name }} ${{ inputs.path }}
       shell: bash
