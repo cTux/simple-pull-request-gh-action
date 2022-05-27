@@ -30,6 +30,9 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
 
+      - name: Installing modules
+        run: pnpm install
+
       - name: Run command
         uses: ./
         with:

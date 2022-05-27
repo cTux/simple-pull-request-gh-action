@@ -4,7 +4,7 @@
   "description": "Just NPM dependencies",
   "main": "index.js",
   "scripts": {
-    "update:dependencies": "pnpx --yes npm-check-updates -u --target minor && pnpm install"
+    "update:dependencies": "pnpx npm-check-updates -u --target minor && pnpm install"
   },
   "keywords": [],
   "author": "",
