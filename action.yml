@@ -13,12 +13,15 @@ inputs:
   branch:
     description: Main branch name
     required: false
+  path:
+    description: Path to the directory where command will be executed
+    required: false
 runs:
   using: 'composite'
   steps:
-    - run: ${{ github.action_path }}/pre-command.sh
+    - run: ${{ github.action_path }}/shell/pre-command.sh ${{ inputs.path }}
       shell: bash
-    - run: ${{ inputs.command }}
+    - run: ${{ github.action_path }}/shell/command.sh ${{ inputs.command }}
       shell: bash
-    - run: ${{ github.action_path }}/post-command.sh ${{ inputs.token }} ${{ inputs.branch }}?
+    - run: ${{ github.action_path }}/shell/post-command.sh ${{ inputs.token }} ${{ inputs.branch }}? ${{ inputs.path }}?
       shell: bash

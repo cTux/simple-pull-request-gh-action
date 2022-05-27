@@ -1,7 +1,14 @@
 #!/bin/bash
 
 set -e
+path=$1
 branch_name="simple-pr-changes"
+
+path_value=${path%?}
+if [ -n "$path_value" ]; then
+    echo "Change directory to $path_value."
+    cd "$path_value"
+fi
 
 echo "Fetching."
 git fetch

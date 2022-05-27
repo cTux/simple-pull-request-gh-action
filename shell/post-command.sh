@@ -2,13 +2,10 @@
 
 set -e
 token=$1
-echo "Token $token."
-branch_main=$2
-echo "Main branch $branch_main."
+branch=$2
+path=$3
 repo=$GITHUB_REPOSITORY
-echo "Repo $repo."
 username=$GITHUB_ACTOR
-echo "Username $username."
 branch_name="simple-pr-changes"
 email="noreply@github.com"
 
@@ -17,10 +14,16 @@ if [ -z "$token" ]; then
     exit 1
 fi
 
-if [ -z "$branch_main" ]; then
-    echo "Can't find main branch name. Settings default."
-    branch_main="main"
-    echo "Main branch changed to $branch_main."
+if [ -z "$branch" ]; then
+    echo "Can't find main branch name. Setting it to default."
+    branch="main"
+    echo "Main branch changed to $branch."
+fi
+
+path_value=${path%?}
+if [ -n "$path_value" ]; then
+    echo "Change directory to $path_value."
+    cd "$path_value"
 fi
 
 echo "Getting diff."

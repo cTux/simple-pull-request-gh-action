@@ -1,0 +1,38 @@
+name: Updating dependencies using pnpm
+
+on:
+  schedule:
+    - cron: '0/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
+
+    steps:
+      - name: Checkout the head commit of the branch
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Use pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.20.3
+
+      - name: Use nodejs ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Run command
+        uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          command: "'pnpm run update:dependencies'"
+          path: "'./deps/pnpm'"
