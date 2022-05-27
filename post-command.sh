@@ -47,5 +47,4 @@ then
     echo "Response: $response"
 else
     echo "No changes were detected."
-    exit 0
 fi

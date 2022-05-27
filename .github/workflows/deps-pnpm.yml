@@ -3,7 +3,6 @@ name: Updating dependencies using pnpm
 on:
   schedule:
     - cron: '0/60 * * * *'
-  workflow_dispatch:
 
 jobs:
   update-dependencies:
