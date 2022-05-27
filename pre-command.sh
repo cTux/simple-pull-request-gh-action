@@ -12,11 +12,16 @@ if [ -n "$path_value" ]; then
     cd "$path_value"
 fi
 
+if [ -z "$branch_pr_name" ]; then
+    echo "Can't find changes branch name. Setting it to default."
+    branch_pr_name="simple-pr-changes"
+    echo "Changes branch changed to $branch_pr_name."
+fi
+
 git config --global user.email $email
 git config --global user.name $username
 
 branch_exists=$(git branch --list $branch_pr_name)
-echo "Branch exists $branch_exists."
 
 if [ -z "$branch_exists" ]; then
     echo "Check out new branch."
