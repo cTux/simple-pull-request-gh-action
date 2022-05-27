@@ -1,8 +1,8 @@
 #!/bin/bash
 
 set -e
-path=$1
-branch_pr_name=$2
+branch_pr_name=$1
+path=$2
 username=$GITHUB_ACTOR
 email="noreply@github.com"
 
