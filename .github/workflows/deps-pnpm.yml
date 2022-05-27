@@ -27,8 +27,7 @@ jobs:
       - name: Use nodejs ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-          cache-dependency-path: deps/pnpm/pnpm-lock.yaml
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
 
       - name: Run command
@@ -36,4 +35,3 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           command: "'pnpm run update:dependencies'"
-          path: "'./deps/pnpm'"
