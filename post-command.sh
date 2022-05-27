@@ -26,9 +26,7 @@ if [ -n "$path_value" ]; then
 fi
 
 echo "Getting diff."
-git diff --exit-code >/dev/null 2>&1
-
-if [ $? = 1 ]
+if [[ $(git status --porcelain) ]];
 then
     echo "Changes detected."
     git remote add authenticated "https://$username:$token@github.com/$repo.git"
