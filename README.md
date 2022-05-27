@@ -38,14 +38,9 @@ jobs:
 | command          | Command to execute.                            | Yes      | N/A                 |
 | token            | GITHUB_TOKEN or a Personal Access Token (PAT). | Yes      | N/A                 |
 | branch_main_name | Base branch name.                              | No       | main                |
+| branch_pr_name   | Changes branch name.                           | No       | simple-pr-changes   |
 | commit_message   | Commit message for a pull request.             | No       | chore(app): changes |
 | path             | Working directory path.                        | No       | ''                  |
-
-## Static
-
-| Name           | Description              | Required | Default           |
-|----------------|--------------------------|----------|-------------------|
-| branch_pr_name | Branch name for changes. | N/A      | simple-pr-changes |
 
 ## Notes:
 * The committer name is set to the GitHub Actions bot user. GitHub <noreply@github.com>
