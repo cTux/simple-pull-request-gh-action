@@ -39,8 +39,7 @@ if [ -n "$path_value" ]; then
 fi
 
 echo "[ACTION]: Getting diff."
-if [[ $(git status --porcelain) ]];
-then
+if [[ $(git status --porcelain) ]]; then
     echo "[ACTION]: Changes detected."
     git remote add authenticated "https://$username:$token@github.com/$repo.git"
     git add -A
@@ -51,8 +50,8 @@ then
         --silent \
         --request GET \
         --header "Accept: application/vnd.github.v3+json" \
-        --header "Authorization: token $GITHUB_TOKEN" \
-        "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls" \
+        --header "Authorization: token $token" \
+        "https://api.github.com/repos/$repo/pulls" \
     )
 
     if [[ "$response" == *"\"title\": \"$commit_message\""* ]]; then
