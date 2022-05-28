@@ -1,13 +1,16 @@
 # Simple Pull Request GitHub Action
 A GitHub action that automates creating pull requests. Just specify command to execute and this action will create a pull request if changes were detected.
 
-Possible usages:
-* To update project's dependencies ([example](./.github/workflows/deps-pnpm.yml))
-* To update auto-generated types, localization, etc.
+### This action helps with:
+* Auto-updating dependencies ([project](./packages/npm-dependencies), [action](./.github/workflows/npm-dependencies.yml))
+* Auto-fixing issues after dependencies audit ([project](./packages/npm-dependencies), [action](./.github/workflows/npm-dependencies-audit.yml))
+* Auto-generating types
+* Auto-fetching new localization
+* Auto-updating public API data saved locally
 
 ## How to use?
 ```yaml
-name: Create PR with new file
+name: Automatic PR
 
 on:
   schedule:
@@ -24,7 +27,7 @@ jobs:
           persist-credentials: false
 
       - name: Run command
-        uses: ctux/simple-pull-request-gh-action@main
+        uses: ctux/simple-pull-request-gh-action@1.0.2-rc
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           command: "'echo 3 >> file.txt'"

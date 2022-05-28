@@ -1,11 +1,11 @@
-name: Updating dependencies using pnpm
+name: Dependencies update
 
 on:
   schedule:
-    - cron: '0/60 * * * *'
+    - cron: '0/10 * * * *'
 
 jobs:
-  update-dependencies:
+  npm-dependencies:
     runs-on: ubuntu-latest
 
     steps:
@@ -13,6 +13,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+
+      - name: Changing directory
+        run: cd packages && cd npm-dependencies
 
       - name: Use pnpm
         uses: pnpm/action-setup@v2.0.1
@@ -32,8 +35,8 @@ jobs:
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          command: "'pnpm run update:dependencies'"
+          command: "'pnpm run dependencies:update'"
           branch_main_name: "'main'"
-          branch_pr_name: "'pnpm-dependencies'"
+          branch_pr_name: "'npm-dependencies'"
           path: ""
           commit_message: "'chore(dependencies): updated automatically'"
