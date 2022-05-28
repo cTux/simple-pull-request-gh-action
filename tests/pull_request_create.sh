@@ -24,3 +24,7 @@ response=$(curl \
 )
 
 echo "[ACTION]: Got response: $response."
+
+if [[ "$response" == *"\"message\": \"Validation Failed\""* ]]; then
+  exit 1
+fi

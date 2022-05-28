@@ -1,15 +1,13 @@
 #!/bin/bash
 
 set -e
-token=$1
+GITHUB_TOKEN=$1
 commit_message=$2
 branch_base_name=$3
 branch_pr_name=$4
 path=$5
-repo=$GITHUB_REPOSITORY
-username=$GITHUB_ACTOR
 
-if [ -z "$token" ]; then
+if [ -z "$GITHUB_TOKEN" ]; then
     echo "[ACTION]: Token is not defined."
     exit 1
 fi
@@ -41,7 +39,7 @@ fi
 echo "[ACTION]: Getting diff."
 if [[ $(git status --porcelain) ]]; then
     echo "[ACTION]: Changes detected."
-    git remote add authenticated "https://$username:$token@github.com/$repo.git"
+    git remote add authenticated "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
     git add -A
     git commit -a -m "$commit_message" --signoff
     git push authenticated -f
@@ -50,14 +48,14 @@ if [[ $(git status --porcelain) ]]; then
         --silent \
         --request GET \
         --header "Accept: application/vnd.github.v3+json" \
-        --header "Authorization: token $token" \
-        "https://api.github.com/repos/$repo/pulls" \
+        --header "Authorization: token $GITHUB_TOKEN" \
+        "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls" \
     )
 
     if [[ "$response" == *"\"title\": \"$commit_message\""* ]]; then
       echo "[ACTION]: Looks like PR has been already created."
     else
-      echo "[ACTION]: Creating PR for: https://api.github.com/repos/$repo/pulls"
+      echo "[ACTION]: Creating PR for: https://api.github.com/repos/$GITHUB_REPOSITORY/pulls"
       echo "[ACTION]: Commit message: $commit_message"
       echo "[ACTION]: Head branch: $branch_pr_name"
       echo "[ACTION]: Base branch: $branch_base_name"
@@ -66,12 +64,16 @@ if [[ $(git status --porcelain) ]]; then
           --silent \
           --request POST \
           --header "Accept: application/vnd.github.v3+json" \
-          --header "Authorization: token $token" \
+          --header "Authorization: token $GITHUB_TOKEN" \
           --header "Content-Type: application/json" \
-          "https://api.github.com/repos/$repo/pulls" \
+          "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls" \
           --data '{"title":"'"$commit_message"'","head": "'$branch_pr_name'","base":"'$branch_base_name'", "body":"Automatic Pull Request."}' \
       )
       echo "[ACTION]: Got response: $response."
+
+      if [[ "$response" == *"\"message\": \"Validation Failed\""* ]]; then
+        exit 1
+      fi
     fi
 else
     echo "[ACTION]: No changes were detected."

@@ -26,3 +26,7 @@ if [[ "$response" == *"\"name\": \"$label\""* ]]; then
 else
   echo "[ACTION]: Can't find label."
 fi
+
+if [[ "$response" == *"\"message\": \"Validation Failed\""* ]]; then
+  exit 1
+fi

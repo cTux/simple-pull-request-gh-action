@@ -3,8 +3,6 @@
 set -e
 branch_pr_name=$1
 path=$2
-username=$GITHUB_ACTOR
-email="noreply@github.com"
 
 path_value=${path%?}
 if [ -n "$path_value" ]; then
@@ -18,8 +16,8 @@ if [ -z "$branch_pr_name" ]; then
     echo "[ACTION]: Changes branch has been changed to $branch_pr_name."
 fi
 
-git config --global user.email $email
-git config --global user.name $username
+git config --global user.email "noreply@github.com"
+git config --global user.name $GITHUB_ACTOR
 
 branch_exists=$(git branch --list $branch_pr_name)
 
