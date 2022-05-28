@@ -26,3 +26,7 @@ if [[ "$response" == *"\"title\": \"$title\""* ]]; then
 else
   echo "[ACTION]: Can't find PR."
 fi
+
+if [[ "$response" == *"\"message\": \"Validation Failed\""* ]]; then
+  exit 1
+fi
