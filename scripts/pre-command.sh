@@ -8,14 +8,14 @@ email="noreply@github.com"
 
 path_value=${path%?}
 if [ -n "$path_value" ]; then
-    echo "Change directory to $path_value."
+    echo "[ACTION]: Changing directory to $path_value."
     cd "$path_value"
 fi
 
 if [ -z "$branch_pr_name" ]; then
-    echo "Can't find changes branch name. Setting it to default."
+    echo "[ACTION]: Can't find changes branch name. Setting it to default."
     branch_pr_name="simple-pr-changes"
-    echo "Changes branch changed to $branch_pr_name."
+    echo "[ACTION]: Changes branch has been changed to $branch_pr_name."
 fi
 
 git config --global user.email $email
@@ -24,11 +24,11 @@ git config --global user.name $username
 branch_exists=$(git branch --list $branch_pr_name)
 
 if [ -z "$branch_exists" ]; then
-    echo "Check out new branch."
+    echo "[ACTION]: Checking out new branch."
     git checkout -b $branch_pr_name
 else
-    echo "Branch name $branch_pr_name already exists."
-    echo "Check out and reset branch instead."
+    echo "[ACTION]: Branch name $branch_pr_name already exists."
+    echo "[ACTION]: Checking out and resetting branch."
     git checkout $branch_pr_name
     git pull
     git reset --hard origin/main
