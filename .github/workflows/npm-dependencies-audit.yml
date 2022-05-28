@@ -5,7 +5,7 @@ on:
     - cron: '0/10 * * * *'
 
 jobs:
-  npm-dependencies:
+  npm-dependencies-audit:
     runs-on: ubuntu-latest
 
     steps:

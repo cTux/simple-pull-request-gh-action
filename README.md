@@ -43,7 +43,6 @@ jobs:
 | branch_main_name | Base branch name.                              | No       | main                |
 | branch_pr_name   | Changes branch name.                           | No       | simple-pr-changes   |
 | commit_message   | Commit message for a pull request.             | No       | chore(app): changes |
-| path             | Working directory path.                        | No       | ''                  |
 
 ## Notes:
 * The committer name is set to the GitHub Actions bot user. GitHub <noreply@github.com>

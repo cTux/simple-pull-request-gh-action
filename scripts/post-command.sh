@@ -5,7 +5,6 @@ GITHUB_TOKEN=$1
 commit_message=$2
 branch_base_name=$3
 branch_pr_name=$4
-path=$5
 
 if [ -z "$GITHUB_TOKEN" ]; then
     echo "[ACTION]: Token is not defined."
@@ -28,12 +27,6 @@ if [ -z "$commit_message" ]; then
     echo "[ACTION]: Can't find commit message. Setting it to default."
     commit_message="chore(app): changes"
     echo "[ACTION]: Commit message has been set to $commit_message."
-fi
-
-path_value=${path%?}
-if [ -n "$path_value" ]; then
-    echo "[ACTION]: Changing directory to $path_value."
-    cd "$path_value"
 fi
 
 echo "[ACTION]: Getting diff."

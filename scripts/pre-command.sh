@@ -2,13 +2,6 @@
 
 set -e
 branch_pr_name=$1
-path=$2
-
-path_value=${path%?}
-if [ -n "$path_value" ]; then
-    echo "[ACTION]: Changing directory to $path_value."
-    cd "$path_value"
-fi
 
 if [ -z "$branch_pr_name" ]; then
     echo "[ACTION]: Can't find changes branch name. Setting it to default."
