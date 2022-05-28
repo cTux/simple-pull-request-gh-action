@@ -14,9 +14,6 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Changing directory
-        run: cd packages && cd npm-dependencies
-
       - name: Use pnpm
         uses: pnpm/action-setup@v2.0.1
         with:
@@ -30,13 +27,13 @@ jobs:
           cache-dependency-path: packages/npm-dependencies/pnpm-lock.yaml
 
       - name: Installing modules
-        run: pnpm install
+        run: cd packages && cd npm-dependencies && pnpm install
 
       - name: Run command
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          command: "'pnpm run dependencies:update'"
+          command: "'cd packages && cd npm-dependencies && pnpm run dependencies:update'"
           branch_main_name: "'main'"
           branch_pr_name: "'npm-dependencies'"
           path: ""
