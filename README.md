@@ -2,8 +2,8 @@
 A GitHub action that automates creating pull requests. Just specify command to execute and this action will create a pull request if changes were detected.
 
 ### This action helps with:
-* Auto-updating dependencies ([project](./packages/npm-dependencies), [action](./.github/workflows/npm-dependencies.yml))
-* Auto-fixing issues after dependencies audit ([project](./packages/npm-dependencies), [action](./.github/workflows/npm-dependencies-audit.yml))
+* Auto-updating dependencies ([project](./packages/npm-dependencies), [action](./.github/workflows/npm-dependencies.yml)) [![Dependencies update](https://github.com/cTux/simple-pull-request-gh-action/actions/workflows/npm-dependencies.yml/badge.svg)](https://github.com/cTux/simple-pull-request-gh-action/actions/workflows/npm-dependencies.yml)
+* Auto-fixing issues after dependencies audit ([project](./packages/npm-dependencies), [action](./.github/workflows/npm-dependencies-audit.yml)) [![Dependencies audit](https://github.com/cTux/simple-pull-request-gh-action/actions/workflows/npm-dependencies-audit.yml/badge.svg)](https://github.com/cTux/simple-pull-request-gh-action/actions/workflows/npm-dependencies-audit.yml)
 * Auto-generating types
 * Auto-fetching new localization
 * Auto-updating public API data saved locally
