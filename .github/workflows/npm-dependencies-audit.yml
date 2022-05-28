@@ -1,0 +1,42 @@
+name: Dependencies audit
+
+on:
+  schedule:
+    - cron: '0/10 * * * *'
+
+jobs:
+  npm-dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the head commit of the branch
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Changing directory
+        run: cd packages && cd npm-dependencies
+
+      - name: Use pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: latest
+
+      - name: Use node
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Installing modules
+        run: pnpm install
+
+      - name: Run command
+        uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          command: "'pnpm run dependencies:audit'"
+          branch_main_name: "'main'"
+          branch_pr_name: "'npm-dependencies-audit'"
+          path: ""
+          commit_message: "'chore(dependencies): updated after audit'"
