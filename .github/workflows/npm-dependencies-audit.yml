@@ -36,5 +36,4 @@ jobs:
           command: "'cd packages && cd npm-dependencies && pnpm run dependencies:audit'"
           branch_main_name: "'main'"
           branch_pr_name: "'npm-dependencies-audit'"
-          path: ""
           commit_message: "'chore(dependencies): updated after audit'"
