@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  npm-check-updates: ^13.1.4
+  npm-check-updates: ^13.1.5
   react: ^17.0.2
   react-dom: ^17.0.2
   typescript: ^4.7.3
@@ -12,7 +12,7 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
 
 devDependencies:
-  npm-check-updates: 13.1.4
+  npm-check-updates: 13.1.5
   typescript: 4.7.3
   webpack: 5.73.0
 
@@ -1536,8 +1536,8 @@ packages:
       npm-normalize-package-bin: 1.0.1
     dev: true
 
-  /npm-check-updates/13.1.4:
-    resolution: {integrity: sha512-aStuPUn/OQBp9vSYBSrjfgluchZtReathYGPMgvjvCo+8pQ5rqO706w49NFh6VXQWYrqeB0MRyjg05hy+IHQcw==}
+  /npm-check-updates/13.1.5:
+    resolution: {integrity: sha512-vAVYlrrxJIPH/R5mxMzrNwP33hYflvk7oQqPjPOySCavCFwhXKmfK5sn/rogyebg7cLnECiDxsczGqvTOEBRAA==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
