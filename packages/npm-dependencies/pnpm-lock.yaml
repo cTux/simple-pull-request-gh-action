@@ -4,7 +4,7 @@ overrides:
   got@<11.8.5: '>=11.8.5'
 
 specifiers:
-  npm-check-updates: ^14.0.1
+  npm-check-updates: ^14.0.2
   react: ^17.0.2
   react-dom: ^17.0.2
   typescript: ^4.7.4
@@ -15,7 +15,7 @@ dependencies:
   react-dom: 17.0.2_react@17.0.2
 
 devDependencies:
-  npm-check-updates: 14.0.1
+  npm-check-updates: 14.0.2
   typescript: 4.7.4
   webpack: 5.73.0
 
@@ -1582,8 +1582,8 @@ packages:
       npm-normalize-package-bin: 1.0.1
     dev: true
 
-  /npm-check-updates/14.0.1:
-    resolution: {integrity: sha512-CjHKxcJur/OiVc2GKBagUrzDsXL8JJC71rNVv2mC7eNA6w/ebe3POx9x46ay4p3woSxJOa7hYWNn1UwL7jgHug==}
+  /npm-check-updates/14.0.2:
+    resolution: {integrity: sha512-rVetP51QHbbbcDhTBkQv+h+EEZbLx1ehPgqT6F9MH3Z23O8tS2Jb7PWusIWCM04qhp2IXu6D3u1sjagG0H7SLw==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
