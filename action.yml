@@ -4,9 +4,6 @@ branding:
   icon: 'arrow-up-circle'
   color: 'green'
 inputs:
-  command:
-    description: Command to execute
-    required: true
   token:
     description: GitHub Token to create a pull request
     required: true
@@ -23,8 +20,6 @@ runs:
   using: 'composite'
   steps:
     - run: ${{ github.action_path }}/scripts/pre-command.sh ${{ inputs.branch_pr_name }}
-      shell: bash
-    - run: ${{ github.action_path }}/scripts/command.sh ${{ inputs.command }}
       shell: bash
     - run: ${{ github.action_path }}/scripts/post-command.sh ${{ inputs.token }} ${{ inputs.commit_message }} ${{ inputs.branch_main_name }} ${{ inputs.branch_pr_name }}
       shell: bash

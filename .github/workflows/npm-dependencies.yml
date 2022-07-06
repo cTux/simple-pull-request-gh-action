@@ -29,11 +29,16 @@ jobs:
       - name: Installing modules
         run: cd packages && cd npm-dependencies && pnpm install
 
-      - name: Run command
+      - name: Updating dependencies
+        run: cd packages && cd npm-dependencies && pnpm exec npm-check-updates -u --target minor
+
+      - name: Installing modules
+        run: cd packages && cd npm-dependencies && pnpm install
+
+      - name: Creating PR
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          command: "'cd packages && cd npm-dependencies && pnpm run dependencies:update'"
           branch_main_name: "'main'"
           branch_pr_name: "'npm-dependencies'"
           commit_message: "'chore(dependencies): updated automatically'"

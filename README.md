@@ -30,7 +30,6 @@ jobs:
         uses: ctux/simple-pull-request-gh-action@1.0.2-rc
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          command: "'echo 3 >> file.txt'"
           commit_message: "'add(app): new file'"
 ```
 
@@ -38,7 +37,6 @@ jobs:
 
 | Name             | Description                                    | Required | Default             |
 |------------------|------------------------------------------------|----------|---------------------|
-| command          | Command to execute.                            | Yes      | N/A                 |
 | token            | GITHUB_TOKEN or a Personal Access Token (PAT). | Yes      | N/A                 |
 | branch_main_name | Base branch name.                              | No       | main                |
 | branch_pr_name   | Changes branch name.                           | No       | simple-pr-changes   |

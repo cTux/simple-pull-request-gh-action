@@ -26,6 +26,9 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: packages/npm-dependencies/pnpm-lock.yaml
 
+      - name: Dependencies audit
+        run: cd packages && cd npm-dependencies && pnpm audit --fix
+
       - name: Installing modules
         run: cd packages && cd npm-dependencies && pnpm install
 
@@ -33,7 +36,6 @@ jobs:
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          command: "'cd packages && cd npm-dependencies && pnpm run dependencies:audit'"
           branch_main_name: "'main'"
           branch_pr_name: "'npm-dependencies-audit'"
           commit_message: "'chore(dependencies): updated after audit'"
