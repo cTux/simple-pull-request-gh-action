@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 overrides:
   got@<11.8.5: '>=11.8.5'
   glob-parent@<6.0.1: '>=6.0.1'
+  terser@>=5.0.0 <5.14.2: '>=5.14.2'
 
 specifiers:
   npm-check-updates: ^14.1.1
