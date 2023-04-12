@@ -9,8 +9,8 @@
   "license": "MIT",
   "devDependencies": {
     "npm-check-updates": "^14.1.1",
-    "typescript": "^4.8.4",
-    "webpack": "^5.74.0"
+    "typescript": "^4.9.5",
+    "webpack": "^5.78.0"
   },
   "dependencies": {
     "react": "^17.0.2",
