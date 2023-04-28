@@ -4,6 +4,9 @@ overrides:
   got@<11.8.5: '>=11.8.5'
   glob-parent@<6.0.1: '>=6.0.1'
   terser@>=5.0.0 <5.14.2: '>=5.14.2'
+  json5@>=2.0.0 <2.2.2: '>=2.2.2'
+  http-cache-semantics@<4.1.1: '>=4.1.1'
+  yaml@>=2.0.0-5 <2.2.2: '>=2.2.2'
 
 dependencies:
   react:
